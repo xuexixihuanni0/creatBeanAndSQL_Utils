@@ -1,0 +1,87 @@
+/*
+ * Welcome to use the TableGo Tools.
+ * 
+ * http://vipbooks.iteye.com
+ * http://blog.csdn.net/vipbooks
+ * http://www.cnblogs.com/vipbooks
+ * 
+ * Author:bianj
+ * Email:edinsker@163.com
+ * Version:5.8.8
+ */
+
+import java.sql.Blob;
+
+/**
+ * PHOTO
+ * 
+ * @author bianj
+ * @version 1.0.0 2019-11-06
+ */
+public class PhotoEntity implements java.io.Serializable {
+    /** 版本号 */
+    private static final long serialVersionUID = 3237570463220373580L;
+
+    /** id */
+    private Integer id;
+
+    /** name */
+    private String name;
+
+    /** photo */
+    private Blob photo;
+
+    /**
+     * 获取id
+     * 
+     * @return id
+     */
+    public Integer getId() {
+        return this.id;
+    }
+
+    /**
+     * 设置id
+     * 
+     * @param id
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * 获取name
+     * 
+     * @return name
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * 设置name
+     * 
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * 获取photo
+     * 
+     * @return photo
+     */
+    public Blob getPhoto() {
+        return this.photo;
+    }
+
+    /**
+     * 设置photo
+     * 
+     * @param photo
+     */
+    public void setPhoto(Blob photo) {
+        this.photo = photo;
+    }
+}

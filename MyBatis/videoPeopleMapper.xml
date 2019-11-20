@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author:bianj
+    Email:edinsker@163.com
+    Version:5.8.8
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- VIDEO_PEOPLE -->
+<mapper namespace="ABCDEFG.videoPeople">
+    <!-- 结果映射 -->
+    <resultMap id="videoPeopleMap" type="VideoPeopleEntity"></resultMap>
+    
+    <!-- 表所有字段 -->
+    <sql id="allColumns">
+        ID, PEOPLE_ID, TARGET_ID, GERDER, HAT_TYPE, HAIR_TYPE, COAT_COLOR, TROUSE_COLOR, 
+        BAG_TYPE, RACE_TYPE, DIRECT, POSX, POSY, GPS_POSLAT, GPS_POSLONG, TIME
+    </sql>
+    
+    <!-- 批量插入数据 -->
+    <insert id="insertVideoPeoples" parameterType="list">
+        INSERT INTO VIDEO_PEOPLE (<include refid="allColumns" />)
+        VALUES (
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+                #{item.id},
+                #{item.peopleId},
+                #{item.targetId},
+                #{item.gerder},
+                #{item.hatType},
+                #{item.hairType},
+                #{item.coatColor},
+                #{item.trouseColor},
+                #{item.bagType},
+                #{item.raceType},
+                #{item.direct},
+                #{item.posx},
+                #{item.posy},
+                #{item.gpsPoslat},
+                #{item.gpsPoslong},
+                #{item.time}
+            )
+        </foreach>
+    </insert>
+    
+</mapper>

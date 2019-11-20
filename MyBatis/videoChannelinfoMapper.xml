@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author:bianj
+    Email:edinsker@163.com
+    Version:5.8.8
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- VIDEO_CHANNELINFO -->
+<mapper namespace="ABCDEFG.videoChannelinfo">
+    <!-- 结果映射 -->
+    <resultMap id="videoChannelinfoMap" type="VideoChannelinfoEntity"></resultMap>
+    
+    <!-- 表所有字段 -->
+    <sql id="allColumns">
+        ID, CHANNELINFO_ID, channelId, countTimestart, countTimeend, vehicleNum, peopleNum, otherVehicleNum, 
+        CAR_ID, PEOPLE_ID, OTHERVEHICLE_ID, TIME
+    </sql>
+    
+    <!-- 批量插入数据 -->
+    <insert id="insertVideoChannelinfos" parameterType="list">
+        INSERT INTO VIDEO_CHANNELINFO (<include refid="allColumns" />)
+        VALUES (
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+                #{item.id},
+                #{item.channelinfoId},
+                #{item.channelId},
+                #{item.countTimestart},
+                #{item.countTimeend},
+                #{item.vehicleNum},
+                #{item.peopleNum},
+                #{item.otherVehicleNum},
+                #{item.carId},
+                #{item.peopleId},
+                #{item.othervehicleId},
+                #{item.time}
+            )
+        </foreach>
+    </insert>
+    
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author:bianj
+    Email:edinsker@163.com
+    Version:5.8.8
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- VIDEO_CAR -->
+<mapper namespace="ABCDEFG.videoCar">
+    <!-- 结果映射 -->
+    <resultMap id="videoCarMap" type="VideoCarEntity"></resultMap>
+    
+    <!-- 表所有字段 -->
+    <sql id="allColumns">
+        ID, CAR_ID, TARGET_ID, LPN, LPN_COLOR, COLOR, BRAND, TYPE, 
+        SPEED, POSX, POSY, GPS_POSLAT, GPS_POSLONG, PTC_HEADING, VEH_TYPE, VEH_L, 
+        TIME
+    </sql>
+    
+    <!-- 批量插入数据 -->
+    <insert id="insertVideoCars" parameterType="list">
+        INSERT INTO VIDEO_CAR (<include refid="allColumns" />)
+        VALUES (
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+                #{item.id},
+                #{item.carId},
+                #{item.targetId},
+                #{item.lpn},
+                #{item.lpnColor},
+                #{item.color},
+                #{item.brand},
+                #{item.type},
+                #{item.speed},
+                #{item.posx},
+                #{item.posy},
+                #{item.gpsPoslat},
+                #{item.gpsPoslong},
+                #{item.ptcHeading},
+                #{item.vehType},
+                #{item.vehL},
+                #{item.time}
+            )
+        </foreach>
+    </insert>
+    
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Welcome to use the TableGo Tools.
+    
+    http://vipbooks.iteye.com
+    http://blog.csdn.net/vipbooks
+    http://www.cnblogs.com/vipbooks
+    
+    Author:bianj
+    Email:edinsker@163.com
+    Version:5.8.8
+-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- FLOW_INFO -->
+<mapper namespace="ABCDEFG.flowInfo">
+    <!-- 结果映射 -->
+    <resultMap id="flowInfoMap" type="FlowInfoEntity"></resultMap>
+    
+    <!-- 表所有字段 -->
+    <sql id="allColumns">
+        ID, FLOWINFO_ID, DETECTION_TIME, DETECTION_MANUFACTURERS, DETECTION_INSTALLATIONAREA, DETECTION_INSTALLPOINT, DETECTION_VERSIONNUMBER, DETECTION_DEVICE, 
+        DETECTION_INSTALLSERIAL, LANE, bigNum, truckNum, vanNum, coupeNum, motoNum, bigSpeed, 
+        truckSpeed, vanSpeed, coupeSpeed, motoSpeed, averOccup, averSpeed, averLength, timeHeadway, 
+        spaceAverSpeed, spaceAverOccup, vehDens, TIME
+    </sql>
+    
+    <!-- 批量插入数据 -->
+    <insert id="insertFlowInfos" parameterType="list">
+        INSERT INTO FLOW_INFO (<include refid="allColumns" />)
+        VALUES (
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+                #{item.id},
+                #{item.flowinfoId},
+                #{item.detectionTime},
+                #{item.detectionManufacturers},
+                #{item.detectionInstallationarea},
+                #{item.detectionInstallpoint},
+                #{item.detectionVersionnumber},
+                #{item.detectionDevice},
+                #{item.detectionInstallserial},
+                #{item.lane},
+                #{item.bigNum},
+                #{item.truckNum},
+                #{item.vanNum},
+                #{item.coupeNum},
+                #{item.motoNum},
+                #{item.bigSpeed},
+                #{item.truckSpeed},
+                #{item.vanSpeed},
+                #{item.coupeSpeed},
+                #{item.motoSpeed},
+                #{item.averOccup},
+                #{item.averSpeed},
+                #{item.averLength},
+                #{item.timeHeadway},
+                #{item.spaceAverSpeed},
+                #{item.spaceAverOccup},
+                #{item.vehDens},
+                #{item.time}
+            )
+        </foreach>
+    </insert>
+    
+</mapper>
